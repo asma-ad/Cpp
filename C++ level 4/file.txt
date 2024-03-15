@@ -1,0 +1,4 @@
+Hello file!
+I'm C++ language!
+Let's code!
+This is a new line (append)!
