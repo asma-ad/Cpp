@@ -335,4 +335,90 @@ public:
     }
 
     // ---Join String---
+    static string joinString(vector<string> vString, string delim)
+    {
+        string str = "";
+        for (string &s : vString)
+        {
+            str = str + s + delim;
+        }
+        return str.substr(0, str.length() - delim.length());
+    }
+    static string joinString(string arrStr[], short length, string delim)
+    {
+        string str = "";
+        for (short i = 0; i < length; i++)
+        {
+            str = str + arrStr[i] + delim;
+        }
+        return str.substr(0, str.length() - delim.length());
+    }
+
+    // ---Reverse words in string---
+    static string reversWordInString(string str)
+    {
+        vector<string> vString;
+        string str2 = "";
+        vString = split(str, " ");
+        vector<string>::iterator i = vString.end(); // iterator
+        while (i != vString.begin())
+        {
+            --i;
+            str2 += *i + " ";
+        }
+        str2 = str2.substr(0, str2.length() - 1); // remove last space
+        return str2;
+    }
+    void reversWordInString()
+    {
+        _value = reversWordInString(_value);
+    }
+
+    // ---replac eWord---
+    static string replaceWord(string str, string strToReplace, string strReplaceTo, bool matchCase = true)
+    {
+        vector<string> vString = split(str, " ");
+
+        for (string &s : vString)
+        {
+            if (matchCase)
+            {
+                if (s == strToReplace)
+                {
+                    s = strReplaceTo;
+                }
+            }
+            else
+            {
+                if (lowerAllString(str) == lowerAllString(strToReplace))
+                {
+                    s = strReplaceTo;
+                }
+            }
+        }
+
+        return joinString(vString, " ");
+    }
+    string replaceWord(string strToReplace, string strReplaceTo)
+    {
+        return replaceWord(_value, strToReplace, strReplaceTo);
+    }
+
+    // ---remove Punctuation---
+    static string removePunctuation(string str)
+    {
+        string str2 = "";
+        for (short i = 0; i < str.length(); i++)
+        {
+            if (!ispunct(str[i]))
+            {
+                str2 += str[i];
+            }
+        }
+        return str2;
+    }
+    void removePunctuation()
+    {
+        _value = removePunctuation(_value);
+    }
 };
