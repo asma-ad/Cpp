@@ -28,14 +28,25 @@ bool isLeapYear(short year)
 
 short numberOfDaysInAMonth(short year, short month)
 {
-    if (month == 2)
+    // check months
+    if (month <= 0 || month > 12)
+        return 0;
+    // check february
+    else if (month == 2)
     {
         return isLeapYear(year) ? 29 : 28;
     }
-    else if (month % 2 != 0)
-        return 31;
-    else
-        return 30;
+
+    // check if month is 30 or 31
+    int arr[] = {1, 3, 5, 7, 8, 10, 12};
+    // months with 31 days -> 1,3,5,7,8,10,12
+    for (short j = 0; j < 7; j++)
+    {
+        if (month == arr[j])
+            return 31;
+    }
+    // months with 30 days -> 4,6,9,11
+    return 30;
 }
 
 short numberOfHoursInAMonth(short year, short month)
