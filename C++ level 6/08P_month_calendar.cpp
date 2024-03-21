@@ -62,7 +62,7 @@ void printMonthCalendar(short year, short month)
     // print appropriate spaces
     short i;
     for (i = 0; i < current; i++)
-        printf("    ");
+        printf("     ");
 
     // print days number
     for (short j = 1; j <= numberOfDays; j++)
