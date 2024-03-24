@@ -45,12 +45,9 @@ short numberOfDaysFromTheBeginningOfTheYear(short day, short month, short year)
     short total = 0;
     for (short i = 1; i < month; i++)
     {
-        if (month == 1)
-            return day;
-        else
-            total += numberOfDaysInAMonth(year, i);
+        total += numberOfDaysInAMonth(year, i);
     }
-    return total + day;
+    return (total + day);
 }
 
 int main()
