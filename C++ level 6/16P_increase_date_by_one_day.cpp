@@ -55,6 +55,7 @@ bool isLastDayInTheMonth(sDate date)
 {
     return (date.days == numberOfDaysInAMonth(date.year, date.months));
 }
+/*
 sDate increaseDateByOneDay(sDate date)
 {
     sDate newDate = date;
@@ -78,6 +79,31 @@ sDate increaseDateByOneDay(sDate date)
     // else add only a day
     newDate.days++;
     return newDate;
+}
+*/
+
+sDate increaseDateByOneDay(sDate date)
+{
+    // is last day in month
+    if (isLastDayInTheMonth(date))
+    {
+        // is Last date in the year 31/12
+        if (isLastMonthInTheYear(date.months))
+        {
+            date.months = 1;
+            date.days = 1;
+            date.year++;
+        }
+        else
+        {
+            date.days = 1;
+            date.months++;
+        }
+    }
+    // it's not last day in month not last month, just add a day
+    else
+        date.days++;
+    return date;
 }
 
 int main()
